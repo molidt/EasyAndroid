@@ -19,4 +19,19 @@ package com.qinxiandiqi.easyandroid.base.util;
  * Created by Jianan on 2015/9/30.
  */
 public class LogUtil {
+
+   public static LogUtil mLogUtil;
+
+   public static synchronized LogUtil getInstance(){
+      if(mLogUtil == null){
+         mLogUtil = new LogUtil();
+      }
+      return mLogUtil;
+   }
+
+   private LogUtil(){
+
+   }
+
+
 }
