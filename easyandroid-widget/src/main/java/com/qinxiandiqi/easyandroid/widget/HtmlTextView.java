@@ -67,7 +67,9 @@ public class HtmlTextView extends TextView{
     }
 
     public void setHtmlListener(HtmlListener listener){
-        mListener = listener;
+        if(listener != null){
+            mListener = listener;
+        }
         if(mImageGatter == null){
             mImageGatter = new Html.ImageGetter() {
                 @Override
@@ -121,14 +123,28 @@ public class HtmlTextView extends TextView{
 
     public static class HtmlListener {
 
+        /**
+         * when click <a> tag, this method would be invoked.
+         * @param link
+         */
         public void onClickLink(String link){
 
         }
 
+        /**
+         * @param source
+         * @return
+         */
         public Drawable getDrawable(String source) {
             return null;
         }
 
+        /**
+         * @param opening
+         * @param tag
+         * @param output
+         * @param xmlReader
+         */
         public void handleTag(boolean opening, String tag, Editable output, XMLReader xmlReader) {
 
         }
