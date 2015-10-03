@@ -34,7 +34,9 @@ import org.xml.sax.XMLReader;
  */
 public class HtmlTextView extends TextView{
 
-    private HtmlClickListener mListener;
+    private HtmlListener mListener;
+    private Html.ImageGetter mImageGatter;
+    private Html.TagHandler mTagHandler;
 
     public HtmlTextView(Context context) {
         super(context);
@@ -49,26 +51,51 @@ public class HtmlTextView extends TextView{
     }
 
     public void setHtml(int res){
-        initHtml(getContext().getString(res));
+        initHtml(getContext().getString(res), null);
+    }
+
+    public void setHtml(int res, HtmlListener listener){
+        initHtml(getContext().getString(res), listener);
     }
 
     public void setHtml(String strHtml){
-        initHtml(strHtml);
+        initHtml(strHtml, null);
     }
 
-    private void initHtml(String strHtml){
-        CharSequence charSequence = Html.fromHtml(strHtml, new Html.ImageGetter() {
-            @Override
-            public Drawable getDrawable(String source) {
-                return mListener.getDrawable(source);
-            }
-        }, new Html.TagHandler() {
-            @Override
-            public void handleTag(boolean opening, String tag, Editable output, XMLReader xmlReader) {
-                mListener.handleTag(opening, tag, output, xmlReader);
-            }
-        });
+    public void setHtml(String strHtml, HtmlListener listener){
+        initHtml(strHtml, listener);
+    }
 
+    public void setHtmlListener(HtmlListener listener){
+        mListener = listener;
+        if(mImageGatter == null){
+            mImageGatter = new Html.ImageGetter() {
+                @Override
+                public Drawable getDrawable(String source) {
+                    if(mListener != null){
+                        return mListener.getDrawable(source);
+                    }else {
+                        return null;
+                    }
+                }
+            };
+        }
+        if(mTagHandler == null){
+            mTagHandler = new Html.TagHandler() {
+                @Override
+                public void handleTag(boolean opening, String tag, Editable output, XMLReader xmlReader) {
+                    if(mListener != null){
+                        mListener.handleTag(opening, tag, output, xmlReader);
+                    }
+                }
+            };
+        }
+    }
+
+    private void initHtml(String strHtml, HtmlListener listener){
+        setHtmlListener(listener);
+
+        CharSequence charSequence = Html.fromHtml(strHtml, mImageGatter, mTagHandler);
         SpannableStringBuilder builder = new SpannableStringBuilder(charSequence);
         URLSpan[] urlSpans = builder.getSpans(0, charSequence.length(), URLSpan.class);
         for(URLSpan span : urlSpans){
@@ -79,17 +106,20 @@ public class HtmlTextView extends TextView{
             builder.setSpan(new ClickableSpan() {
                 @Override
                 public void onClick(View widget) {
-                    mListener.onClickLink(link);
+                    if (mListener != null) {
+                        mListener.onClickLink(link);
+                    }
                 }
             }, start, end, flag);
             builder.removeSpan(span);
         }
-        setText(charSequence);
+
         setLinksClickable(true);
         setMovementMethod(LinkMovementMethod.getInstance());
+        setText(charSequence);
     }
 
-    public static class HtmlClickListener{
+    public static class HtmlListener {
 
         public void onClickLink(String link){
 
