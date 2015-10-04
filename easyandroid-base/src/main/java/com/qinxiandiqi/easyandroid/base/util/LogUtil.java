@@ -15,12 +15,17 @@
  */
 package com.qinxiandiqi.easyandroid.base.util;
 
+import android.util.Log;
+
 /**
  * Created by Jianan on 2015/9/30.
  */
 public class LogUtil {
 
    public static LogUtil mLogUtil;
+
+   private String DEFAULT_LOG_TAG = "easyandroid";
+   private boolean isDebug = true;
 
    public static synchronized LogUtil getInstance(){
       if(mLogUtil == null){
@@ -33,5 +38,62 @@ public class LogUtil {
 
    }
 
+   public void setTag(String tag){
+      DEFAULT_LOG_TAG = tag;
+   }
 
+   public void setDebug(boolean isDebug){
+      this.isDebug = isDebug;
+   }
+
+   public void i(String msg){
+      log(Log.INFO, msg, null);
+   }
+
+   public void i(String msg, Throwable throwable){
+      log(Log.INFO, msg, throwable);
+   }
+
+   public void e(String msg){
+      log(Log.ERROR, msg, null);
+   }
+
+   public void e(String msg, Throwable throwable){
+      log(Log.ERROR, msg, throwable);
+   }
+
+   public void d(String msg){
+      log(Log.DEBUG, msg, null);
+   }
+
+   public void d(String msg, Throwable throwable){
+      log(Log.DEBUG, msg, throwable);
+   }
+
+   public void w(String msg){
+      log(Log.WARN, msg, null);
+   }
+
+   public void w(String msg, Throwable throwable){
+      log(Log.WARN, msg, throwable);
+   }
+
+   public void v(String msg){
+      log(Log.VERBOSE, msg, null);
+   }
+
+   public void v(String msg, Throwable throwable){
+      log(Log.VERBOSE, msg, throwable);
+   }
+   private int log(int type, String msg, Throwable throwable){
+      if(isDebug){
+         if(throwable != null){
+            return Log.println(type, DEFAULT_LOG_TAG, msg + "\n" + Log.getStackTraceString(throwable));
+         }else{
+            return Log.println(type, DEFAULT_LOG_TAG, msg);
+         }
+      }else{
+         return 0;
+      }
+   }
 }
