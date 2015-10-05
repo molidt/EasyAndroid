@@ -1,4 +1,4 @@
-package com.qinxiandiqi.easyandroid;
+package com.qinxiandiqi.sample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
