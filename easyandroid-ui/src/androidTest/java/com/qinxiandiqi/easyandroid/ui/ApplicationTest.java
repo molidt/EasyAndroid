@@ -1,4 +1,4 @@
-package com.qinxiandiqi.easyandroid.widget;
+package com.qinxiandiqi.easyandroid.ui;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

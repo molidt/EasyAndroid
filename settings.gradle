@@ -1,1 +1,1 @@
-include ':sample', ':easyandroid-base', ':easyandroid', ':easyandroid-bluetooth', ':easyandroid-cache', ':easyandroid-widget'
+include ':sample', ':easyandroid-base', ':easyandroid', ':easyandroid-bluetooth', ':easyandroid-cache', ':easyandroid-ui'

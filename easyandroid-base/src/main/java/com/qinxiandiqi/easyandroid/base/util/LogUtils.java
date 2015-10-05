@@ -20,21 +20,21 @@ import android.util.Log;
 /**
  * Created by Jianan on 2015/9/30.
  */
-public class LogUtil {
+public class LogUtils {
 
-   public static LogUtil mLogUtil;
+   public static LogUtils mLogUtils;
 
    private String DEFAULT_LOG_TAG = "easyandroid";
    private boolean isDebug = true;
 
-   public static synchronized LogUtil getInstance(){
-      if(mLogUtil == null){
-         mLogUtil = new LogUtil();
+   public static synchronized LogUtils getInstance(){
+      if(mLogUtils == null){
+         mLogUtils = new LogUtils();
       }
-      return mLogUtil;
+      return mLogUtils;
    }
 
-   private LogUtil(){
+   private LogUtils(){
 
    }
 

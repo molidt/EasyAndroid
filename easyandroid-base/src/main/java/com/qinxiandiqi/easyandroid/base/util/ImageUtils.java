@@ -23,11 +23,11 @@ import java.io.File;
 /**
  * Created by Jianan on 3/5/15.
  */
-public class ImageUtil {
+public class ImageUtils {
 
 
     public static BitmapFactory.Options getBitmapOption(File bitmapFile){
-        return ImageUtil.getBitmapOption(bitmapFile.getAbsoluteFile());
+        return ImageUtils.getBitmapOption(bitmapFile.getAbsoluteFile());
     }
 
     public static BitmapFactory.Options getBitmapOption(String bitmapPath){

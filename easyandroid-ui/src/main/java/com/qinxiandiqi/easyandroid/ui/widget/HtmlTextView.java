@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.widget;
+package com.qinxiandiqi.easyandroid.ui.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
