@@ -25,13 +25,19 @@ import java.lang.annotation.Target;
  * Created by Jianan on 10/5/15.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
 @Documented
-public @interface ContentView {
+@Target(ElementType.FIELD)
+public @interface View {
 
     /**
-     * the layout resource id
+     * the resource id of view.
      * @return
      */
-    public int value();
+    int value();
+
+    /**
+     * the outside view id, maybe is the parent view or ancestral view
+     * @return
+     */
+    int outside() default 0;
 }

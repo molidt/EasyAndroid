@@ -18,15 +18,31 @@ package com.qinxiandiqi.easyandroid.ui.util;
 import android.app.Activity;
 import android.view.View;
 
+import com.qinxiandiqi.easyandroid.ui.annotation.Layout;
+import com.qinxiandiqi.easyandroid.widget.R;
+
+import java.lang.reflect.Field;
+
 /**
  * Created by Jianan on 10/5/15.
  */
 public class UIUtils {
 
     public static void init(Activity act){
-
+        Layout layout = act.getClass().getAnnotation(Layout.class);
+        if(layout != null){
+            act.setContentView(layout.value());
+        }
+        init(act.getWindow().getDecorView(), act);
     }
 
-    public static void init(View rootView, Object handle){
+    public static void init(View rootView, Object handler){
+        Class handleClass = handler.getClass();
+        Field[] fields = handleClass.getDeclaredFields();
+        if(fields != null && fields.length > 0){
+            for(Field field : fields){
+            }
+        }
     }
+
 }

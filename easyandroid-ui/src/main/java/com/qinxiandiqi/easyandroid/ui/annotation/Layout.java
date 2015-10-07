@@ -25,12 +25,13 @@ import java.lang.annotation.Target;
  * Created by Jianan on 10/5/15.
  */
 @Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
 @Documented
-@Target(ElementType.FIELD)
-public @interface ViewInject {
+@BaseResource(BaseResource.Type.LAYOUT)
+public @interface Layout {
 
     /**
-     * the resource id of view.
+     * the content layout resource id
      * @return
      */
     public int value();
