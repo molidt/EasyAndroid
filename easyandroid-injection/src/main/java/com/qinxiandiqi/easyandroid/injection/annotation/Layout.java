@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.ui.annotation;
+package com.qinxiandiqi.easyandroid.injection.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -25,13 +25,14 @@ import java.lang.annotation.Target;
  * Created by Jianan on 10/5/15.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target(ElementType.TYPE)
 @Documented
-public @interface OnClick {
+@BaseResource(BaseResource.Type.LAYOUT)
+public @interface Layout {
 
     /**
-     * the resource id of view which want to register onClickListener.
+     * the content layout resource id
      * @return
      */
-    public int[] value();
+    public int value();
 }

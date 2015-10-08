@@ -13,20 +13,19 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.ui.util;
+package com.qinxiandiqi.easyandroid.injection.util;
 
 import android.app.Activity;
 import android.view.View;
 
-import com.qinxiandiqi.easyandroid.ui.annotation.Layout;
-import com.qinxiandiqi.easyandroid.widget.R;
+import com.qinxiandiqi.easyandroid.injection.annotation.Layout;
 
 import java.lang.reflect.Field;
 
 /**
  * Created by Jianan on 10/5/15.
  */
-public class UIUtils {
+public class InjectUtils {
 
     public static void init(Activity act){
         Layout layout = act.getClass().getAnnotation(Layout.class);

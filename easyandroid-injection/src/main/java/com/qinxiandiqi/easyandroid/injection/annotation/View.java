@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.ui.annotation;
+package com.qinxiandiqi.easyandroid.injection.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -25,14 +25,19 @@ import java.lang.annotation.Target;
  * Created by Jianan on 10/5/15.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
 @Documented
-@BaseResource(BaseResource.Type.LAYOUT)
-public @interface Layout {
+@Target(ElementType.FIELD)
+public @interface View {
 
     /**
-     * the content layout resource id
+     * the resource id of view.
      * @return
      */
-    public int value();
+    int value();
+
+    /**
+     * the outside view id, maybe is the parent view or ancestral view
+     * @return
+     */
+    int outside() default 0;
 }
