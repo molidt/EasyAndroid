@@ -1,6 +1,8 @@
 # EasyAndroid
 Make the android development to be easy.
 
+It's not finished now, please wait...
+
 # License
 
     Copyright 2015 Jianan - qinxiandiqi@foxmail.com

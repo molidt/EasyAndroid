@@ -20,5 +20,12 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.+'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':easyandroid-base')
+    compile project(':easyandroid-bluetooth')
+    compile project(':easyandroid-cache')
+    compile project(':easyandroid-database')
+    compile project(':easyandroid-injection')
+    compile project(':easyandroid-network')
+    compile project(':easyandroid-ui')
 }
