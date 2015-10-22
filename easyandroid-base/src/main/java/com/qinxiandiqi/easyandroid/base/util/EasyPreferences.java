@@ -25,76 +25,76 @@ import java.util.Set;
 /**
  * Created by Jianan on 10/22/15.
  */
-public class EasyPerferences {
+public class EasyPreferences {
 
     private SharedPreferences mInstance;
     private SharedPreferences.Editor mEditor;
     private boolean isTransaction = false;
 
-    private EasyPerferences(Context ctx, String name){
+    private EasyPreferences(Context ctx, String name){
         this(ctx, name, Context.MODE_PRIVATE);
     }
 
-    private EasyPerferences(Context ctx, String name, int mode){
+    private EasyPreferences(Context ctx, String name, int mode){
         mInstance = ctx.getApplicationContext().getSharedPreferences(name, mode);
         mEditor = mInstance.edit();
         isTransaction = false;
     }
 
-    public EasyPerferences startTransaction(){
+    public EasyPreferences startTransaction(){
         isTransaction = true;
         return this;
     }
 
-    private EasyPerferences tryCommit(){
+    private EasyPreferences tryCommit(){
         if(!isTransaction){
             mEditor.commit();
         }
         return this;
     }
 
-    public EasyPerferences commit(){
+    public EasyPreferences commit(){
         isTransaction = false;
         return tryCommit();
     }
 
-    public EasyPerferences putInt(String key, int value){
+    public EasyPreferences putInt(String key, int value){
         mEditor.putInt(key, value);
         return tryCommit();
     }
 
-    public EasyPerferences putString(String key, String value){
+    public EasyPreferences putString(String key, String value){
         mEditor.putString(key, value);
         return tryCommit();
     }
 
-    public EasyPerferences putBoolean(String key, boolean value){
+    public EasyPreferences putBoolean(String key, boolean value){
         mEditor.putBoolean(key, value);
         return tryCommit();
     }
 
-    public EasyPerferences putLong(String key, long value){
+    public EasyPreferences putLong(String key, long value){
         mEditor.putLong(key, value);
         return tryCommit();
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public EasyPerferences putStringSet(String key, Set<String> value){
+    public EasyPreferences putStringSet(String key, Set<String> value){
         mEditor.putStringSet(key, value);
         return tryCommit();
     }
 
-    public EasyPerferences putFloat(String key, float value){
+    public EasyPreferences putFloat(String key, float value){
         mEditor.putFloat(key, value);
         return tryCommit();
     }
 
-    public EasyPerferences remove(String key){
+    public EasyPreferences remove(String key){
         mEditor.remove(key);
         return tryCommit();
     }
 
-    public EasyPerferences clear(){
+    public EasyPreferences clear(){
         mEditor.clear();
         return tryCommit();
     }
