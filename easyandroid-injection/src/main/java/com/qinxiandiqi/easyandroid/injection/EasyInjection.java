@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.injection.util;
+package com.qinxiandiqi.easyandroid.injection;
 
 import android.app.Activity;
 import android.view.View;
@@ -25,7 +25,7 @@ import java.lang.reflect.Field;
 /**
  * Created by Jianan on 10/5/15.
  */
-public class InjectUtils {
+public class EasyInjection {
 
     public static void init(Activity act){
         Layout layout = act.getClass().getAnnotation(Layout.class);
