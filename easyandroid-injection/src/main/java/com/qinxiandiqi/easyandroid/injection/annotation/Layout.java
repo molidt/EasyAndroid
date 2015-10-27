@@ -34,5 +34,5 @@ public @interface Layout {
      * the content layout resource id
      * @return
      */
-    public int value();
+    int value();
 }

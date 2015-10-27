@@ -27,6 +27,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.FIELD)
+@BaseResource(BaseResource.Type.VIEW)
 public @interface View {
 
     /**
