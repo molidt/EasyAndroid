@@ -33,4 +33,12 @@ public class EasyParserTest extends InstrumentationTestCase {
         assertEquals(EasyParser.parseDoubleFromStr("-23.55", 0), -23.55);
         assertEquals(EasyParser.parseDoubleFromStr("23.00", 0), 23.00);
     }
+
+    @Test
+    public void testParseFloatFromStr(){
+        assertEquals(EasyParser.parseFloatFromStr("0.12", 0), 0.12);
+        assertEquals(EasyParser.parseFloatFromStr("-0.12", 0), -0.12);
+        assertEquals(EasyParser.parseFloatFromStr("sdfas", 0), 0);
+        assertEquals(EasyParser.parseFloatFromStr("23.00", 0), 23.0);
+    }
 }
