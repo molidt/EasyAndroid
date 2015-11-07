@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
  * Created by Jianan on 2015/10/7.
  */
 @Target(ElementType.ANNOTATION_TYPE)
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Documented
 public @interface BaseResource {
 
@@ -57,6 +57,11 @@ public @interface BaseResource {
         /**
          * drawable resource
          */
-        DRAWABLE
+        DRAWABLE,
+
+        /**
+         * dimen resource
+         */
+        DIMEN
     }
 }

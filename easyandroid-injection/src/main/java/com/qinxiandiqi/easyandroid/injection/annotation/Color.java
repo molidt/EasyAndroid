@@ -22,23 +22,17 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by Jianan on 10/5/15.
+ * Created by Jianan on 11/7/15.
  */
-@Retention(RetentionPolicy.CLASS)
 @Documented
 @Target(ElementType.FIELD)
-@BaseResource(BaseResource.Type.VIEW)
-public @interface View {
+@Retention(RetentionPolicy.CLASS)
+@BaseResource(BaseResource.Type.COLOR)
+public @interface Color {
 
-    /**
-     * the resource id of view.
-     * @return
-     */
-    int value();
-
-    /**
-     * the outside view id, maybe is the parent view or ancestral view
-     * @return
-     */
-    int outside() default 0;
+   /**
+    * The color resource id.
+    * @return
+    */
+   int value();
 }

@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 /**
  * Created by Jianan on 10/5/15.
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
 @Documented
 @BaseResource(BaseResource.Type.LAYOUT)
