@@ -15,59 +15,21 @@
  */
 package com.qinxiandiqi.easyandroid.injection.annotation;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.lang.String;
 
 /**
- * Created by Jianan on 2015/10/7.
+ * Created by Jianan on 11/9/15.
  */
-@Target(ElementType.ANNOTATION_TYPE)
 @Retention(RetentionPolicy.CLASS)
-@Documented
-public @interface BaseResource {
+@Target(ElementType.FIELD)
+@BaseResource(BaseResource.Type.ANIM)
+public @interface Animation {
 
-    Type value();
-
-    String test() default "";
-
-    enum Type{
-        /**
-         * layout resource
-         */
-        LAYOUT,
-
-        /**
-         * view resource
-         */
-        VIEW,
-
-        /**
-         * string resource
-         */
-        STRING,
-
-        /**
-         * color resource
-         */
-        COLOR,
-
-        /**
-         * drawable resource
-         */
-        DRAWABLE,
-
-        /**
-         * dimen resource
-         */
-        DIMEN,
-
-        /**
-         * animation resource
-         */
-        ANIM
-    }
+   /**
+    * @return the animation resource id.
+    */
+   int value();
 }
