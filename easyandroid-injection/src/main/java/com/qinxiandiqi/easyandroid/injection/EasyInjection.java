@@ -27,21 +27,27 @@ import java.lang.reflect.Field;
  */
 public class EasyInjection {
 
-    public static void init(Activity act){
-        Layout layout = act.getClass().getAnnotation(Layout.class);
-        if(layout != null){
-            act.setContentView(layout.value());
-        }
-        init(act.getWindow().getDecorView(), act);
+    private View rootView;
+
+    public static final EasyInjection bind(Activity act, int layoutID){
+        act.setContentView(layoutID);
+        return bind(act.getWindow().getDecorView());
     }
 
-    public static void init(View rootView, Object handler){
-        Class handleClass = handler.getClass();
-        Field[] fields = handleClass.getDeclaredFields();
-        if(fields != null && fields.length > 0){
-            for(Field field : fields){
-            }
-        }
+    public static final EasyInjection bind(View rootView){
+        EasyInjection instance = new EasyInjection();
+        instance.rootView = rootView;
+        return instance;
+    }
+
+    public final <T extends View> EasyInjection view(T view, int resID){
+        view = (T) rootView.findViewById(resID);
+        return this;
+    }
+
+    public final EasyInjection string(String target, int resID){
+        target = rootView.getResources().getString(resID);
+        return this;
     }
 
 }
