@@ -50,4 +50,8 @@ public class EasyInjection {
         return this;
     }
 
+    public final EasyInjection color(Integer target, int resID){
+        target = rootView.getResources().getColor(resID);
+        return this;
+    }
 }
