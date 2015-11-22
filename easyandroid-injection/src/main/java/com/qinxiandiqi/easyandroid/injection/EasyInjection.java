@@ -17,6 +17,8 @@ package com.qinxiandiqi.easyandroid.injection;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.qinxiandiqi.easyandroid.injection.annotation.Layout;
 
@@ -52,6 +54,16 @@ public class EasyInjection {
 
     public final EasyInjection color(Integer target, int resID){
         target = rootView.getResources().getColor(resID);
+        return this;
+    }
+
+    public final EasyInjection dimen(Float target, int resID){
+        target = rootView.getResources().getDimension(resID);
+        return this;
+    }
+
+    public final EasyInjection anim(Animation target, int resID){
+        target = AnimationUtils.loadAnimation(rootView.getContext(), resID);
         return this;
     }
 }
