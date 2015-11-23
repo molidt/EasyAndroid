@@ -23,6 +23,11 @@ import android.view.animation.AnimationUtils;
 import com.qinxiandiqi.easyandroid.injection.annotation.Layout;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by Jianan on 10/5/15.
@@ -30,20 +35,28 @@ import java.lang.reflect.Field;
 public class EasyInjection {
 
     private View rootView;
+    private Object holder;
+    private Map<Integer, View> cacheViews = new HashMap<Integer, View>();
 
     public static final EasyInjection bind(Activity act, int layoutID){
         act.setContentView(layoutID);
-        return bind(act.getWindow().getDecorView());
+        return bind(act.getWindow().getDecorView(), act);
     }
 
-    public static final EasyInjection bind(View rootView){
+    public static final EasyInjection bind(View rootView, Object holder){
         EasyInjection instance = new EasyInjection();
         instance.rootView = rootView;
+        instance.holder = holder;
         return instance;
     }
 
     public final <T extends View> EasyInjection view(T view, int resID){
-        view = (T) rootView.findViewById(resID);
+        if(cacheViews.containsKey(resID)){
+            view = (T) cacheViews.get(resID);
+        }else{
+            view = (T) rootView.findViewById(resID);
+            cacheViews.put(resID, view);
+        }
         return this;
     }
 
@@ -64,6 +77,28 @@ public class EasyInjection {
 
     public final EasyInjection anim(Animation target, int resID){
         target = AnimationUtils.loadAnimation(rootView.getContext(), resID);
+        return this;
+    }
+
+    public final EasyInjection onClick(final Method target, int... resIDs){
+        View.OnClickListener listener = new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    target.invoke(holder, v);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        View tempView = null;
+        for(int id : resIDs){
+            view(tempView, id);
+            tempView.setOnClickListener(listener);
+        }
         return this;
     }
 }
