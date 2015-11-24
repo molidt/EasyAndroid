@@ -101,4 +101,15 @@ public class EasyInjection {
         }
         return this;
     }
+
+    public final EasyInjection onClick(final String methodName, int... resIDs){
+        try {
+            Method method = holder.getClass().getDeclaredMethod(methodName, View.class);
+            onClick(method, resIDs);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }finally {
+            return this;
+        }
+    }
 }
