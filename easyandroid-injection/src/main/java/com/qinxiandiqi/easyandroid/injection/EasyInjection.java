@@ -19,6 +19,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 
 import com.qinxiandiqi.easyandroid.injection.annotation.Layout;
 
@@ -107,7 +108,43 @@ public class EasyInjection {
             Method method = holder.getClass().getDeclaredMethod(methodName, View.class);
             onClick(method, resIDs);
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Can't find out " + methodName + " method.", e);
+        }finally {
+            return this;
+        }
+    }
+
+    public final EasyInjection onItemClick(final Method target, int... resIDs){
+        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    target.invoke(holder, parent, view, position, id);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        View tempView = null;
+        for(int id : resIDs){
+            view(tempView, id);
+            if(tempView instanceof AdapterView){
+                ((AdapterView)tempView).setOnItemClickListener(listener);
+            }else{
+                throw new RuntimeException("The view with id(" + id + ") is not a AdapterView.");
+            }
+        }
+        return this;
+    }
+
+    public final EasyInjection onItemClick(String methodName, int... resIDs){
+        try {
+            Method method = holder.getClass().getMethod(methodName, AdapterView.class, View.class, Integer.class, Long.class);
+            onItemClick(method, resIDs);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("Can't find out " + methodName + " method.", e);
         }finally {
             return this;
         }
