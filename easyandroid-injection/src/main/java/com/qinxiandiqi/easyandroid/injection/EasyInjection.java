@@ -114,7 +114,7 @@ public class EasyInjection {
         }
     }
 
-    public final EasyInjection onItemClick(final Method target, int... resIDs){
+    public final EasyInjection onItemClick(final Method target, int resID){
         AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -128,21 +128,19 @@ public class EasyInjection {
             }
         };
         View tempView = null;
-        for(int id : resIDs){
-            view(tempView, id);
-            if(tempView instanceof AdapterView){
-                ((AdapterView)tempView).setOnItemClickListener(listener);
-            }else{
-                throw new RuntimeException("The view with id(" + id + ") is not a AdapterView.");
-            }
+        view(tempView, resID);
+        if(tempView instanceof AdapterView){
+            ((AdapterView)tempView).setOnItemClickListener(listener);
+        }else{
+            throw new RuntimeException("The view with id(" + resID + ") is not a AdapterView.");
         }
         return this;
     }
 
-    public final EasyInjection onItemClick(String methodName, int... resIDs){
+    public final EasyInjection onItemClick(String methodName, int resID){
         try {
             Method method = holder.getClass().getMethod(methodName, AdapterView.class, View.class, Integer.class, Long.class);
-            onItemClick(method, resIDs);
+            onItemClick(method, resID);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException("Can't find out " + methodName + " method.", e);
         }finally {
