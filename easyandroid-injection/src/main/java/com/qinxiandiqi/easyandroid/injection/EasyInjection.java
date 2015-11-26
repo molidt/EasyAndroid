@@ -87,6 +87,7 @@ public class EasyInjection {
             @Override
             public void onClick(View v) {
                 try {
+                    target.setAccessible(true);
                     target.invoke(holder, v);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -119,6 +120,7 @@ public class EasyInjection {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
+                    target.setAccessible(true);
                     target.invoke(holder, parent, view, position, id);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -146,5 +148,39 @@ public class EasyInjection {
         }finally {
             return this;
         }
+    }
+
+    public final EasyInjection onLongClick(final Method target, int... resIDs){
+        View.OnLongClickListener listener = new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                try {
+                    target.setAccessible(true);
+                    return (boolean) target.invoke(holder, v);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }
+        };
+        View tempView = null;
+        for(int id : resIDs){
+            view(tempView, id);
+            tempView.setOnLongClickListener(listener);
+        }
+        return this;
+    }
+
+    public final EasyInjection onLongClick(String methodName, int... resIDs){
+        try {
+            Method method = holder.getClass().getDeclaredMethod(methodName, View.class);
+            onLongClick(method, resIDs);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("Can't find out method name - " + methodName, e);
+        }
+
+        return this;
     }
 }
