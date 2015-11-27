@@ -183,4 +183,38 @@ public class EasyInjection {
 
         return this;
     }
+
+    public final EasyInjection onItemLongClick(final Method target, int resID){
+        AdapterView.OnItemLongClickListener listener = new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    return (boolean) target.invoke(holder, parent, view, position, id);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }
+        };
+        View tempView = null;
+        view(tempView, resID);
+        if(tempView instanceof AdapterView){
+            ((AdapterView)tempView).setOnItemLongClickListener(listener);
+        }else{
+            throw new RuntimeException("The view with id(" + resID + ") is not a AdapterView.");
+        }
+        return this;
+    }
+
+    public final EasyInjection onItemLongClick(String methodName, int resID){
+        try {
+            Method method = holder.getClass().getDeclaredMethod(methodName, AdapterView.class, View.class, Integer.class, Long.class);
+            onItemLongClick(method, resID);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("can't find out method of this name:" + methodName, e);
+        }
+        return this;
+    }
 }
