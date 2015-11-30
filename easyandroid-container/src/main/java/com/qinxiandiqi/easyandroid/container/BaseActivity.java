@@ -17,8 +17,29 @@ package com.qinxiandiqi.easyandroid.container;
 
 import android.support.v4.app.FragmentActivity;
 
+import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
+
+import java.util.HashMap;
+
 /**
  * Created by Jianan on 11/28/15.
  */
-public class BaseActivity extends FragmentActivity {
+public class BaseActivity extends FragmentActivity implements DataTransport{
+
+   private HashMap<Integer, Object> dataMap = new HashMap<Integer, Object>();
+
+   @Override
+   public <T> T getValue(int key, Class<T> type) {
+      Object value = dataMap.get(key);
+      if(value.getClass() == type){
+         return (T) value;
+      }else {
+         return null;
+      }
+   }
+
+   @Override
+   public <T> T saveValue(int key, T value) {
+      return (T) dataMap.put(key, value);
+   }
 }

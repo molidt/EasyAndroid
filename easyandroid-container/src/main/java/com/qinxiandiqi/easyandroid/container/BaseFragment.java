@@ -17,8 +17,27 @@ package com.qinxiandiqi.easyandroid.container;
 
 import android.support.v4.app.Fragment;
 
+import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
+
 /**
  * Created by Jianan on 11/29/15.
  */
-public class BaseFragment extends Fragment {
+public class BaseFragment extends Fragment implements DataTransport{
+   @Override
+   public <T> T getValue(int key, Class<T> type) {
+      if(getActivity() != null && getActivity() instanceof DataTransport){
+         return ((DataTransport) getActivity()).getValue(key, type);
+      }else {
+         return null;
+      }
+   }
+
+   @Override
+   public <T> T saveValue(int key, T value) {
+      if(getActivity() != null && getActivity() instanceof DataTransport){
+         return ((DataTransport) getActivity()).saveValue(key, value);
+      }else{
+         return null;
+      }
+   }
 }
