@@ -15,13 +15,10 @@
  */
 package com.qinxiandiqi.easyandroid.container.interfaces;
 
-import com.qinxiandiqi.easyandroid.container.Controller;
-
 /**
- * Created by Jianan on 12/1/15.
+ * Created by Jianan on 12/2/15.
  */
-public interface Control {
+public interface ControllerManager {
 
-
-
+   void startController(Control controller);
 }

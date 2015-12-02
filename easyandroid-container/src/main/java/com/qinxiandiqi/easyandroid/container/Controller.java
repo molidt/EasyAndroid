@@ -15,10 +15,12 @@
  */
 package com.qinxiandiqi.easyandroid.container;
 
+import com.qinxiandiqi.easyandroid.container.interfaces.Control;
+
 /**
  * Created by Jianan on 12/1/15.
  */
-public class Controller {
+public class Controller implements Control{
 
    private Controller parent;
 
