@@ -24,4 +24,13 @@ public class Controller implements Control{
 
    private Controller parent;
 
+   @Override
+   public void bind(Fragment fragment) {
+
+   }
+
+   @Override
+   public void bind(Class<Fragment> fragmentClass) {
+
+   }
 }

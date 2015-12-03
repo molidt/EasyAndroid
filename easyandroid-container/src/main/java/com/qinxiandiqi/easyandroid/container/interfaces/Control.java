@@ -15,13 +15,14 @@
  */
 package com.qinxiandiqi.easyandroid.container.interfaces;
 
-import com.qinxiandiqi.easyandroid.container.Controller;
+import android.support.v4.app.Fragment;
 
 /**
  * Created by Jianan on 12/1/15.
  */
 public interface Control {
 
-
+   void bind(Fragment fragment);
+   void bind(Class<Fragment> fragmentClass);
 
 }
