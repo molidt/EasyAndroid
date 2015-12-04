@@ -15,13 +15,17 @@
  */
 package com.qinxiandiqi.easyandroid.container;
 
+import android.support.v4.app.Fragment;
+
 import com.qinxiandiqi.easyandroid.container.interfaces.Control;
+import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
 
 /**
  * Created by Jianan on 12/1/15.
  */
 public class Controller implements Control{
 
+   private ControllerManage mControllerManager;
    private Controller parent;
 
    @Override
@@ -32,5 +36,15 @@ public class Controller implements Control{
    @Override
    public void bind(Class<Fragment> fragmentClass) {
 
+   }
+
+   @Override
+   public ControllerManage getControllerManager() {
+      return mControllerManager;
+   }
+
+   @Override
+   public void setControllerManager(ControllerManage controllerManager) {
+      mControllerManager = controllerManager;
    }
 }

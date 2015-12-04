@@ -13,12 +13,30 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.container.interfaces;
+package com.qinxiandiqi.easyandroid.container;
+
+import android.support.v4.app.Fragment;
+
+import com.qinxiandiqi.easyandroid.container.interfaces.Control;
+import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
 
 /**
- * Created by Jianan on 12/2/15.
+ * Created by Jianan on 12/4/15.
  */
-public interface ControllerManager {
+public class ControllerManager implements ControllerManage {
 
-   void startController(Control controller);
+   @Override
+   public void startController(Control controller) {
+
+   }
+
+   @Override
+   public Control obtainController(Fragment fragment) {
+      return null;
+   }
+
+   @Override
+   public Control obtainController(Class<Fragment> fragmentClass) {
+      return null;
+   }
 }

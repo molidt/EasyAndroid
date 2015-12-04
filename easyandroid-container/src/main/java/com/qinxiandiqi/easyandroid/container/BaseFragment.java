@@ -18,13 +18,13 @@ package com.qinxiandiqi.easyandroid.container;
 import android.support.v4.app.Fragment;
 
 import com.qinxiandiqi.easyandroid.container.interfaces.Control;
-import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManager;
+import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
 import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
 
 /**
  * Created by Jianan on 11/29/15.
  */
-public class BaseFragment extends Fragment implements DataTransport, ControllerManager {
+public class BaseFragment extends Fragment implements DataTransport, ControllerManage {
    @Override
    public <T> T getValue(int key, Class<T> type) {
       if(getActivity() != null && getActivity() instanceof DataTransport){
@@ -45,8 +45,8 @@ public class BaseFragment extends Fragment implements DataTransport, ControllerM
 
    @Override
    public void startController(Control controller) {
-      if(getActivity() != null && getActivity() instanceof ControllerManager){
-         ((ControllerManager) getActivity()).startController(controller);
+      if(getActivity() != null && getActivity() instanceof ControllerManage){
+         ((ControllerManage) getActivity()).startController(controller);
       }
    }
 }

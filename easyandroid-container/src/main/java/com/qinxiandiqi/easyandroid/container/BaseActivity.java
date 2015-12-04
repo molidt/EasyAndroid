@@ -18,7 +18,7 @@ package com.qinxiandiqi.easyandroid.container;
 import android.support.v4.app.FragmentActivity;
 
 import com.qinxiandiqi.easyandroid.container.interfaces.Control;
-import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManager;
+import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
 import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
 
 import java.util.HashMap;
@@ -26,7 +26,7 @@ import java.util.HashMap;
 /**
  * Created by Jianan on 11/28/15.
  */
-public class BaseActivity extends FragmentActivity implements DataTransport, ControllerManager {
+public class BaseActivity extends FragmentActivity implements DataTransport {
 
    private HashMap<Integer, Object> dataMap = new HashMap<Integer, Object>();
 
@@ -45,8 +45,4 @@ public class BaseActivity extends FragmentActivity implements DataTransport, Con
       return (T) dataMap.put(key, value);
    }
 
-   @Override
-   public void startController(Control controller) {
-
-   }
 }

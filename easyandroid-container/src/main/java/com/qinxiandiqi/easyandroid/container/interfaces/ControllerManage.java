@@ -18,13 +18,12 @@ package com.qinxiandiqi.easyandroid.container.interfaces;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by Jianan on 12/1/15.
+ * Created by Jianan on 12/2/15.
  */
-public interface Control {
+public interface ControllerManage {
 
-   void bind(Fragment fragment);
-   void bind(Class<Fragment> fragmentClass);
-   ControllerManage getControllerManager();
-   void setControllerManager(ControllerManage controllerManager);
+   void startController(Control controller);
 
+   Control obtainController(Fragment fragment);
+   Control obtainController(Class<Fragment> fragmentClass);
 }
