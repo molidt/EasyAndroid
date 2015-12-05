@@ -15,15 +15,56 @@
  */
 package com.qinxiandiqi.easyandroid.container.interfaces;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+
+import java.util.List;
 
 /**
  * Created by Jianan on 12/2/15.
  */
 public interface ControllerManage {
 
+   /**
+    * Start to run the controller.
+    * @param controller the target controller.
+    */
    void startController(Control controller);
 
-   Control obtainController(Fragment fragment);
-   Control obtainController(Class<Fragment> fragmentClass);
+   /**
+    * Obtain a controller by the target fragment and its args.
+    * @param fragment the target fragment
+    * @param args the fragment's args
+    * @return
+    */
+   Control obtainController(Fragment fragment, Bundle args);
+
+   /**
+    * Obtain a controller by the target fragment class and its args.
+    * @param fragmentClass the target fragment's class
+    * @param args the target fragment's args
+    * @return
+    */
+   Control obtainController(Class<Fragment> fragmentClass, Bundle args);
+
+   /**
+    * find a running controller by its id
+    * @param id the id of the running controller
+    * @return
+    */
+   Control findControllerByID(int id);
+
+   /**
+    * find a running controller list group by the controller's target fragment class.
+    * @param fragmentClass
+    * @return
+    */
+   List<Control> findControllerByClass(Class<Fragment> fragmentClass);
+
+   /**
+    * A ControllerManager should attach to an activity, this method set the attaching activity.
+    * @param activity
+    */
+   void setAttachActivity(FragmentActivity activity);
 }

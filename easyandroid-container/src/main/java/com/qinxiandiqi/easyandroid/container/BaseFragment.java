@@ -24,29 +24,7 @@ import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
 /**
  * Created by Jianan on 11/29/15.
  */
-public class BaseFragment extends Fragment implements DataTransport, ControllerManage {
-   @Override
-   public <T> T getValue(int key, Class<T> type) {
-      if(getActivity() != null && getActivity() instanceof DataTransport){
-         return ((DataTransport) getActivity()).getValue(key, type);
-      }else {
-         return null;
-      }
-   }
+public class BaseFragment extends Fragment {
 
-   @Override
-   public <T> T saveValue(int key, T value) {
-      if(getActivity() != null && getActivity() instanceof DataTransport){
-         return ((DataTransport) getActivity()).saveValue(key, value);
-      }else{
-         return null;
-      }
-   }
 
-   @Override
-   public void startController(Control controller) {
-      if(getActivity() != null && getActivity() instanceof ControllerManage){
-         ((ControllerManage) getActivity()).startController(controller);
-      }
-   }
 }
