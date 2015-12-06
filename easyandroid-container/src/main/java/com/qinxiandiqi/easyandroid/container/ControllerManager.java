@@ -23,6 +23,7 @@ import com.qinxiandiqi.easyandroid.container.interfaces.Control;
 import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
 import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,6 +33,7 @@ import java.util.List;
 public class ControllerManager implements ControllerManage, DataTransport {
 
    private volatile HashMap<Integer, Object> dataMap = new HashMap<Integer, Object>();
+   private volatile WeakReference<FragmentActivity> cacheActivity;
 
    @Override
    public <T> T getValue(int key, Class<T> type) {
@@ -85,6 +87,10 @@ public class ControllerManager implements ControllerManage, DataTransport {
 
    @Override
    public void setAttachActivity(FragmentActivity activity) {
-
+      if(cacheActivity == null || cacheActivity.get() == null || cacheActivity.get().isFinishing()){
+         cacheActivity = new WeakReference<FragmentActivity>(activity);
+      }else{
+         throw new RuntimeException("ControllerManager shouldn't be attached to more then one activity.");
+      }
    }
 }
