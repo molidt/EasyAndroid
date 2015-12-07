@@ -30,7 +30,7 @@ public interface ControllerManage {
     * Start to run the controller.
     * @param controller the target controller.
     */
-   void startController(Control controller);
+   void startController(Controller controller);
 
    /**
     * Obtain a controller by the target fragment and its args.
@@ -38,7 +38,7 @@ public interface ControllerManage {
     * @param args the fragment's args
     * @return
     */
-   Control obtainController(Fragment fragment, Bundle args);
+   Controller obtainController(Fragment fragment, Bundle args);
 
    /**
     * Obtain a controller by the target fragment class and its args.
@@ -46,21 +46,21 @@ public interface ControllerManage {
     * @param args the target fragment's args
     * @return
     */
-   Control obtainController(Class<Fragment> fragmentClass, Bundle args);
+   Controller obtainController(Class<Fragment> fragmentClass, Bundle args);
 
    /**
     * find a running controller by its id
     * @param id the id of the running controller
     * @return
     */
-   Control findControllerByID(int id);
+   Controller findControllerByID(int id);
 
    /**
     * find a running controller list group by the controller's target fragment class.
     * @param fragmentClass
     * @return
     */
-   List<Control> findControllerByClass(Class<Fragment> fragmentClass);
+   List<Controller> findControllerByClass(Class<Fragment> fragmentClass);
 
    /**
     * A ControllerManager should attach to an activity, this method set the attaching activity.

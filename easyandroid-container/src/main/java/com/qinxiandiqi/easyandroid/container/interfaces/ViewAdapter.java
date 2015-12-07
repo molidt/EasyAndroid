@@ -18,13 +18,20 @@ package com.qinxiandiqi.easyandroid.container.interfaces;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by Jianan on 12/1/15.
+ * The adapter interface between controller and view(fragment).
+ * Created by Jianan on 12/7/15.
  */
-public interface Control {
+public interface ViewAdapter {
 
-   void bind(Fragment fragment);
-   void bind(Class<Fragment> fragmentClass);
-   ControllerManage getControllerManager();
-   void setControllerManager(ControllerManage controllerManager);
+   /**
+    * bind the fragment.
+    * @param fragment
+    */
+   void bindFragment(Fragment fragment);
 
+   /**
+    * bind the controller.
+    * @param controller
+    */
+   void bindController(Controller controller);
 }

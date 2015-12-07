@@ -19,7 +19,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.Control;
+import com.qinxiandiqi.easyandroid.container.interfaces.Controller;
 import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
 import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
 
@@ -61,27 +61,27 @@ public class ControllerManager implements ControllerManage, DataTransport {
    }
 
    @Override
-   public void startController(Control controller) {
+   public void startController(Controller controller) {
 
    }
 
    @Override
-   public Control obtainController(Fragment fragment, Bundle args) {
+   public Controller obtainController(Fragment fragment, Bundle args) {
       return null;
    }
 
    @Override
-   public Control obtainController(Class<Fragment> fragmentClass, Bundle args) {
+   public Controller obtainController(Class<Fragment> fragmentClass, Bundle args) {
       return null;
    }
 
    @Override
-   public Control findControllerByID(int id) {
+   public Controller findControllerByID(int id) {
       return null;
    }
 
    @Override
-   public List<Control> findControllerByClass(Class<Fragment> fragmentClass) {
+   public List<Controller> findControllerByClass(Class<Fragment> fragmentClass) {
       return null;
    }
 

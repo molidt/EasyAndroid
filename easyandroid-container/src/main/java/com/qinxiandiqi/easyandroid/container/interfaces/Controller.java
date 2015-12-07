@@ -13,38 +13,18 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.container;
+package com.qinxiandiqi.easyandroid.container.interfaces;
 
 import android.support.v4.app.Fragment;
-
-import com.qinxiandiqi.easyandroid.container.interfaces.Control;
-import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
 
 /**
  * Created by Jianan on 12/1/15.
  */
-public class Controller implements Control{
+public interface Controller {
 
-   private ControllerManage mControllerManager;
-   private Controller parent;
+   void bind(Fragment fragment);
+   void bind(Class<Fragment> fragmentClass);
+   ControllerManage getControllerManager();
+   void setControllerManager(ControllerManage controllerManager);
 
-   @Override
-   public void bind(Fragment fragment) {
-
-   }
-
-   @Override
-   public void bind(Class<Fragment> fragmentClass) {
-
-   }
-
-   @Override
-   public ControllerManage getControllerManager() {
-      return mControllerManager;
-   }
-
-   @Override
-   public void setControllerManager(ControllerManage controllerManager) {
-      mControllerManager = controllerManager;
-   }
 }

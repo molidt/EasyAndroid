@@ -17,12 +17,6 @@ package com.qinxiandiqi.easyandroid.container;
 
 import android.support.v4.app.FragmentActivity;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.Control;
-import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
-import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
-
-import java.util.HashMap;
-
 /**
  * Created by Jianan on 11/28/15.
  */

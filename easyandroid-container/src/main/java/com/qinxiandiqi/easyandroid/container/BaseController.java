@@ -17,10 +17,34 @@ package com.qinxiandiqi.easyandroid.container;
 
 import android.support.v4.app.Fragment;
 
+import com.qinxiandiqi.easyandroid.container.interfaces.Controller;
+import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
+
 /**
- * Created by Jianan on 11/29/15.
+ * Created by Jianan on 12/1/15.
  */
-public class BaseFragment extends Fragment {
+public class BaseController implements Controller {
 
+   private ControllerManage mControllerManager;
+   private BaseController parent;
 
+   @Override
+   public void bind(Fragment fragment) {
+
+   }
+
+   @Override
+   public void bind(Class<Fragment> fragmentClass) {
+
+   }
+
+   @Override
+   public ControllerManage getControllerManager() {
+      return mControllerManager;
+   }
+
+   @Override
+   public void setControllerManager(ControllerManage controllerManager) {
+      mControllerManager = controllerManager;
+   }
 }
