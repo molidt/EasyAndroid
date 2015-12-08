@@ -20,7 +20,7 @@ import android.support.v4.app.Fragment;
 /**
  * Created by Jianan on 12/1/15.
  */
-public interface Controller {
+public interface Controller extends DataTransport{
 
    void bind(Fragment fragment);
    void bind(Class<Fragment> fragmentClass);

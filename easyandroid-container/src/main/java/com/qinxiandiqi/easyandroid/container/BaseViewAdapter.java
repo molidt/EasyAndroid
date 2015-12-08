@@ -18,53 +18,44 @@ package com.qinxiandiqi.easyandroid.container;
 import android.support.v4.app.Fragment;
 
 import com.qinxiandiqi.easyandroid.container.interfaces.Controller;
-import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
+import com.qinxiandiqi.easyandroid.container.interfaces.ViewAdapter;
 
 /**
- * Created by Jianan on 12/1/15.
+ *
+ * Created by Jianan on 12/8/15.
  */
-public class BaseController implements Controller {
+public class BaseViewAdapter implements ViewAdapter{
 
-   private ControllerManage mControllerManager;
-   private BaseController parent;
+   private Fragment mFragment;
+   private Controller mController;
+
+   @Override
+   public void bindFragment(Fragment fragment) {
+      mFragment = fragment;
+   }
+
+   @Override
+   public void bindController(Controller controller) {
+      mController = controller;
+   }
 
    @Override
    public <T> T getValue(int key, Class<T> type) {
-      return null;
+      return mController.getValue(key, type);
    }
 
    @Override
    public <T> T saveValue(int key, T value) {
-      return null;
+      return mController.saveValue(key, value);
    }
 
    @Override
    public <T> T getGlobalValue(int key, Class<T> type) {
-      return null;
+      return mController.getGlobalValue(key, type);
    }
 
    @Override
    public <T> T saveGlobalValue(int key, T value) {
-      return null;
-   }
-
-   @Override
-   public void bind(Fragment fragment) {
-
-   }
-
-   @Override
-   public void bind(Class<Fragment> fragmentClass) {
-
-   }
-
-   @Override
-   public ControllerManage getControllerManager() {
-      return mControllerManager;
-   }
-
-   @Override
-   public void setControllerManager(ControllerManage controllerManager) {
-      mControllerManager = controllerManager;
+      return mController.saveGlobalValue(key, value);
    }
 }

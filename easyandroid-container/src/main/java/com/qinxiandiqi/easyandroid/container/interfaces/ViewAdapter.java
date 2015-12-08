@@ -21,7 +21,7 @@ import android.support.v4.app.Fragment;
  * The adapter interface between controller and view(fragment).
  * Created by Jianan on 12/7/15.
  */
-public interface ViewAdapter {
+public interface ViewAdapter extends DataTransport{
 
    /**
     * bind the fragment.
