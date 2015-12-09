@@ -13,15 +13,16 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.container.interfaces;
+package com.qinxiandiqi.easyandroid.container;
+
+import com.qinxiandiqi.easyandroid.container.interfaces.Controller;
+
+import java.util.Stack;
 
 /**
- * Created by Jianan on 12/1/15.
+ * Created by Jianan on 12/9/15.
  */
-public interface Controller extends DataTransport{
+public class ControllerStack extends Stack<Controller>{
 
-   void bind(ViewAdapter viewAdapter);
-   ControllerManage getControllerManager();
-   void setControllerManager(ControllerManage controllerManager);
 
 }

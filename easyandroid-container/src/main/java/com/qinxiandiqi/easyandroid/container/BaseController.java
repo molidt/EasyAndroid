@@ -19,6 +19,7 @@ import android.support.v4.app.Fragment;
 
 import com.qinxiandiqi.easyandroid.container.interfaces.Controller;
 import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
+import com.qinxiandiqi.easyandroid.container.interfaces.ViewAdapter;
 
 /**
  * Created by Jianan on 12/1/15.
@@ -26,7 +27,8 @@ import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
 public class BaseController implements Controller {
 
    private ControllerManage mControllerManager;
-   private BaseController parent;
+   private BaseController mParent;
+   private ViewAdapter mViewAAdapter;
 
    @Override
    public <T> T getValue(int key, Class<T> type) {
@@ -49,13 +51,8 @@ public class BaseController implements Controller {
    }
 
    @Override
-   public void bind(Fragment fragment) {
-
-   }
-
-   @Override
-   public void bind(Class<Fragment> fragmentClass) {
-
+   public void bind(ViewAdapter viewAdapter) {
+      mViewAAdapter = viewAdapter;
    }
 
    @Override
