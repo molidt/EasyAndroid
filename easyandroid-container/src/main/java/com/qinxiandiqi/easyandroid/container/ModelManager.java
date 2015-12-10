@@ -13,25 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.container.interfaces;
-
-import android.support.v4.app.Fragment;
+package com.qinxiandiqi.easyandroid.container;
 
 /**
- * The adapter interface between presenter and view(fragment).
- * Created by Jianan on 12/7/15.
+ * Created by Jianan on 12/10/15.
  */
-public interface ViewAdapter extends DataTransport{
-
-   /**
-    * bind the fragment.
-    * @param fragment
-    */
-   void bindFragment(Fragment fragment);
-
-   /**
-    * bind the presenter.
-    * @param presenter
-    */
-   void bindPresenter(Presenter presenter);
+public class ModelManager {
 }

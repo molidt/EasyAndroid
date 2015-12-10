@@ -18,10 +18,10 @@ package com.qinxiandiqi.easyandroid.container.interfaces;
 /**
  * Created by Jianan on 12/1/15.
  */
-public interface Controller extends DataTransport{
+public interface Presenter extends DataTransport{
 
    void bind(ViewAdapter viewAdapter);
-   ControllerManage getControllerManager();
-   void setControllerManager(ControllerManage controllerManager);
+   PresenterManage getPresenterManager();
+   void setPresenterManager(PresenterManage presenterManager);
 
 }

@@ -17,7 +17,7 @@ package com.qinxiandiqi.easyandroid.container;
 
 import android.support.v4.app.Fragment;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.Controller;
+import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
 import com.qinxiandiqi.easyandroid.container.interfaces.ViewAdapter;
 
 /**
@@ -27,7 +27,7 @@ import com.qinxiandiqi.easyandroid.container.interfaces.ViewAdapter;
 public class BaseViewAdapter implements ViewAdapter{
 
    private Fragment mFragment;
-   private Controller mController;
+   private Presenter mPresenter;
 
    @Override
    public void bindFragment(Fragment fragment) {
@@ -35,27 +35,27 @@ public class BaseViewAdapter implements ViewAdapter{
    }
 
    @Override
-   public void bindController(Controller controller) {
-      mController = controller;
+   public void bindPresenter(Presenter presenter) {
+      mPresenter = presenter;
    }
 
    @Override
    public <T> T getValue(int key, Class<T> type) {
-      return mController.getValue(key, type);
+      return mPresenter.getValue(key, type);
    }
 
    @Override
    public <T> T saveValue(int key, T value) {
-      return mController.saveValue(key, value);
+      return mPresenter.saveValue(key, value);
    }
 
    @Override
    public <T> T getGlobalValue(int key, Class<T> type) {
-      return mController.getGlobalValue(key, type);
+      return mPresenter.getGlobalValue(key, type);
    }
 
    @Override
    public <T> T saveGlobalValue(int key, T value) {
-      return mController.saveGlobalValue(key, value);
+      return mPresenter.saveGlobalValue(key, value);
    }
 }

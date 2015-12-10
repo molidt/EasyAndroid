@@ -24,46 +24,46 @@ import java.util.List;
 /**
  * Created by Jianan on 12/2/15.
  */
-public interface ControllerManage {
+public interface PresenterManage {
 
    /**
-    * Start to run the controller.
-    * @param controller the target controller.
+    * Start to run the presenter.
+    * @param presenter the target presenter.
     */
-   void startController(Controller controller);
+   void startPresenter(Presenter presenter);
 
    /**
-    * Obtain a controller by the target fragment and its args.
+    * Obtain a presenter by the target fragment and its args.
     * @param fragment the target fragment
     * @param args the fragment's args
     * @return
     */
-   Controller obtainController(Fragment fragment, Bundle args);
+   Presenter obtainPresenter(Fragment fragment, Bundle args);
 
    /**
-    * Obtain a controller by the target fragment class and its args.
+    * Obtain a presenter by the target fragment class and its args.
     * @param fragmentClass the target fragment's class
     * @param args the target fragment's args
     * @return
     */
-   Controller obtainController(Class<Fragment> fragmentClass, Bundle args);
+   Presenter obtainPresenter(Class<Fragment> fragmentClass, Bundle args);
 
    /**
-    * find a running controller by its id
-    * @param id the id of the running controller
+    * find a running presenter by its id
+    * @param id the id of the running presenter
     * @return
     */
-   Controller findControllerByID(int id);
+   Presenter findPresenterByID(int id);
 
    /**
-    * find a running controller list group by the controller's target fragment class.
+    * find a running presenter list group by the presenter's target fragment class.
     * @param fragmentClass
     * @return
     */
-   List<Controller> findControllerByClass(Class<Fragment> fragmentClass);
+   List<Presenter> findPresenterByClass(Class<Fragment> fragmentClass);
 
    /**
-    * A ControllerManager should attach to an activity, this method set the attaching activity.
+    * A PresenterManager should attach to an activity, this method set the attaching activity.
     * @param activity
     */
    void setAttachActivity(FragmentActivity activity);

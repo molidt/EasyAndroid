@@ -15,14 +15,14 @@
  */
 package com.qinxiandiqi.easyandroid.container;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.Controller;
+import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
 
 import java.util.Stack;
 
 /**
  * Created by Jianan on 12/9/15.
  */
-public class ControllerStack extends Stack<Controller>{
+public class PresenterStack extends Stack<Presenter>{
 
 
 }

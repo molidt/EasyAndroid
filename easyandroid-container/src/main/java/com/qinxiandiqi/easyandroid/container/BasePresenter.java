@@ -15,19 +15,17 @@
  */
 package com.qinxiandiqi.easyandroid.container;
 
-import android.support.v4.app.Fragment;
-
-import com.qinxiandiqi.easyandroid.container.interfaces.Controller;
-import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
+import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
+import com.qinxiandiqi.easyandroid.container.interfaces.PresenterManage;
 import com.qinxiandiqi.easyandroid.container.interfaces.ViewAdapter;
 
 /**
  * Created by Jianan on 12/1/15.
  */
-public class BaseController implements Controller {
+public class BasePresenter implements Presenter {
 
-   private ControllerManage mControllerManager;
-   private BaseController mParent;
+   private PresenterManage mPresenterManager;
+   private BasePresenter mParent;
    private ViewAdapter mViewAAdapter;
 
    @Override
@@ -56,12 +54,12 @@ public class BaseController implements Controller {
    }
 
    @Override
-   public ControllerManage getControllerManager() {
-      return mControllerManager;
+   public PresenterManage getPresenterManager() {
+      return mPresenterManager;
    }
 
    @Override
-   public void setControllerManager(ControllerManage controllerManager) {
-      mControllerManager = controllerManager;
+   public void setPresenterManager(PresenterManage presenterManager) {
+      mPresenterManager = presenterManager;
    }
 }

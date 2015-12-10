@@ -19,8 +19,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.Controller;
-import com.qinxiandiqi.easyandroid.container.interfaces.ControllerManage;
+import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
+import com.qinxiandiqi.easyandroid.container.interfaces.PresenterManage;
 import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
 
 import java.lang.ref.WeakReference;
@@ -30,11 +30,11 @@ import java.util.List;
 /**
  * Created by Jianan on 12/4/15.
  */
-public class ControllerManager implements ControllerManage, DataTransport {
+public class PresenterManager implements PresenterManage, DataTransport {
 
    private volatile HashMap<Integer, Object> mDataMap = new HashMap<Integer, Object>();
    private volatile WeakReference<FragmentActivity> mCacheActivity;
-   private volatile ControllerStack mControllerStack = new ControllerStack();
+   private volatile PresenterStack mPresenterStack = new PresenterStack();
 
    @Override
    public <T> T getValue(int key, Class<T> type) {
@@ -62,27 +62,27 @@ public class ControllerManager implements ControllerManage, DataTransport {
    }
 
    @Override
-   public void startController(Controller controller) {
-      mControllerStack.push(controller);
+   public void startPresenter(Presenter presenter) {
+      mPresenterStack.push(presenter);
    }
 
    @Override
-   public Controller obtainController(Fragment fragment, Bundle args) {
+   public Presenter obtainPresenter(Fragment fragment, Bundle args) {
       return null;
    }
 
    @Override
-   public Controller obtainController(Class<Fragment> fragmentClass, Bundle args) {
+   public Presenter obtainPresenter(Class<Fragment> fragmentClass, Bundle args) {
       return null;
    }
 
    @Override
-   public Controller findControllerByID(int id) {
+   public Presenter findPresenterByID(int id) {
       return null;
    }
 
    @Override
-   public List<Controller> findControllerByClass(Class<Fragment> fragmentClass) {
+   public List<Presenter> findPresenterByClass(Class<Fragment> fragmentClass) {
       return null;
    }
 
@@ -91,7 +91,7 @@ public class ControllerManager implements ControllerManage, DataTransport {
       if(mCacheActivity == null || mCacheActivity.get() == null || mCacheActivity.get().isFinishing()){
          mCacheActivity = new WeakReference<FragmentActivity>(activity);
       }else{
-         throw new RuntimeException("ControllerManager shouldn't be attached to more then one activity.");
+         throw new RuntimeException("PresenterManager shouldn't be attached to more then one activity.");
       }
    }
 }
