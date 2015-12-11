@@ -15,8 +15,10 @@
  */
 package com.qinxiandiqi.easyandroid.container;
 
+import com.qinxiandiqi.easyandroid.container.interfaces.ModelManager;
+
 /**
- * Created by Jianan on 12/10/15.
+ * Created by Jianan on 12/10/2015.
  */
-public class ModelManager {
+public class EasyModelManager implements ModelManager{
 }

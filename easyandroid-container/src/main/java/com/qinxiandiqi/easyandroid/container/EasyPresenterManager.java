@@ -20,7 +20,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
-import com.qinxiandiqi.easyandroid.container.interfaces.PresenterManage;
+import com.qinxiandiqi.easyandroid.container.interfaces.PresenterManager;
 import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
 
 import java.lang.ref.WeakReference;
@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * Created by Jianan on 12/4/15.
  */
-public class PresenterManager implements PresenterManage, DataTransport {
+public class EasyPresenterManager implements PresenterManager, DataTransport {
 
    private volatile HashMap<Integer, Object> mDataMap = new HashMap<Integer, Object>();
    private volatile WeakReference<FragmentActivity> mCacheActivity;
@@ -91,7 +91,7 @@ public class PresenterManager implements PresenterManage, DataTransport {
       if(mCacheActivity == null || mCacheActivity.get() == null || mCacheActivity.get().isFinishing()){
          mCacheActivity = new WeakReference<FragmentActivity>(activity);
       }else{
-         throw new RuntimeException("PresenterManager shouldn't be attached to more then one activity.");
+         throw new RuntimeException("EasyPresenterManager shouldn't be attached to more then one activity.");
       }
    }
 }

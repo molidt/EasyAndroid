@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Created by Jianan on 12/2/15.
  */
-public interface PresenterManage {
+public interface PresenterManager {
 
    /**
     * Start to run the presenter.
@@ -63,7 +63,7 @@ public interface PresenterManage {
    List<Presenter> findPresenterByClass(Class<Fragment> fragmentClass);
 
    /**
-    * A PresenterManager should attach to an activity, this method set the attaching activity.
+    * A EasyPresenterManager should attach to an activity, this method set the attaching activity.
     * @param activity
     */
    void setAttachActivity(FragmentActivity activity);

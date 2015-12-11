@@ -15,51 +15,47 @@
  */
 package com.qinxiandiqi.easyandroid.container;
 
+import android.support.v4.app.Fragment;
+
 import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
-import com.qinxiandiqi.easyandroid.container.interfaces.PresenterManage;
 import com.qinxiandiqi.easyandroid.container.interfaces.ViewAdapter;
 
 /**
- * Created by Jianan on 12/1/15.
+ *
+ * Created by Jianan on 12/8/15.
  */
-public class BasePresenter implements Presenter {
+public class EasyViewAdapter implements ViewAdapter{
 
-   private PresenterManage mPresenterManager;
-   private BasePresenter mParent;
-   private ViewAdapter mViewAAdapter;
+   private Fragment mFragment;
+   private Presenter mPresenter;
+
+   @Override
+   public void bindFragment(Fragment fragment) {
+      mFragment = fragment;
+   }
+
+   @Override
+   public void bindPresenter(Presenter presenter) {
+      mPresenter = presenter;
+   }
 
    @Override
    public <T> T getValue(int key, Class<T> type) {
-      return null;
+      return mPresenter.getValue(key, type);
    }
 
    @Override
    public <T> T saveValue(int key, T value) {
-      return null;
+      return mPresenter.saveValue(key, value);
    }
 
    @Override
    public <T> T getGlobalValue(int key, Class<T> type) {
-      return null;
+      return mPresenter.getGlobalValue(key, type);
    }
 
    @Override
    public <T> T saveGlobalValue(int key, T value) {
-      return null;
-   }
-
-   @Override
-   public void bind(ViewAdapter viewAdapter) {
-      mViewAAdapter = viewAdapter;
-   }
-
-   @Override
-   public PresenterManage getPresenterManager() {
-      return mPresenterManager;
-   }
-
-   @Override
-   public void setPresenterManager(PresenterManage presenterManager) {
-      mPresenterManager = presenterManager;
+      return mPresenter.saveGlobalValue(key, value);
    }
 }
