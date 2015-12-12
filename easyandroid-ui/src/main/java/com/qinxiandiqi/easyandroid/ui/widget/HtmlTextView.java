@@ -30,7 +30,7 @@ import android.widget.TextView;
 import org.xml.sax.XMLReader;
 
 /**
- * Created by Jianan on 9/29/15.
+ * Created by Jianan on 2015/9/29.
  */
 public class HtmlTextView extends TextView{
 

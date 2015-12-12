@@ -16,7 +16,7 @@
 package com.qinxiandiqi.easyandroid.container.exception;
 
 /**
- * Created by Jianan on 11/30/15.
+ * Created by Jianan on 2015/11/30.
  */
 public class TypeError extends Exception {
 

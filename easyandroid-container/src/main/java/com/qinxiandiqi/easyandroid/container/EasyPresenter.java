@@ -20,7 +20,7 @@ import com.qinxiandiqi.easyandroid.container.interfaces.PresenterManager;
 import com.qinxiandiqi.easyandroid.container.interfaces.ViewAdapter;
 
 /**
- * Created by Jianan on 12/1/15.
+ * Created by Jianan on 2015/12/1.
  */
 public class EasyPresenter implements Presenter {
 

@@ -22,7 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by Jianan on 11/8/15.
+ * Created by Jianan on 2015/11/8.
  */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)

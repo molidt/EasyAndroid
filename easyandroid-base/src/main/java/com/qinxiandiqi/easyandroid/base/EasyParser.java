@@ -16,7 +16,7 @@
 package com.qinxiandiqi.easyandroid.base;
 
 /**
- * Created by Jianan on 10/25/15.
+ * Created by Jianan on 2015/10/25.
  */
 public class EasyParser {
 

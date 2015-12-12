@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Jianan on 12/4/15.
+ * Created by Jianan on 2015/12/4.
  */
 public class EasyPresenterManager implements PresenterManager, DataTransport {
 

@@ -16,7 +16,7 @@
 package com.qinxiandiqi.easyandroid.bluetooth;
 
 /**
- * Created by Jianan on 3/17/15.
+ * Created by Jianan on 2015/3/17.
  */
 public class BluetoothFragment {
 }

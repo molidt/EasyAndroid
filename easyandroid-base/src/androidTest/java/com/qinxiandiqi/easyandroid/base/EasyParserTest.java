@@ -5,7 +5,7 @@ import android.test.InstrumentationTestCase;
 import org.junit.Test;
 
 /**
- * Created by Jianan on 10/28/15.
+ * Created by Jianan on 2015/10/28.
  */
 public class EasyParserTest extends InstrumentationTestCase {
 

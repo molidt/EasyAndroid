@@ -16,7 +16,7 @@
 package com.qinxiandiqi.easyandroid.container.interfaces;
 
 /**
- * Created by Jianan on 12/1/15.
+ * Created by Jianan on 2015/12/1.
  */
 public interface Presenter extends DataTransport{
 

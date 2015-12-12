@@ -18,7 +18,7 @@ package com.qinxiandiqi.easyandroid.container;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by Jianan on 11/29/15.
+ * Created by Jianan on 2015/11/29.
  */
 public class BaseFragment extends Fragment {
 

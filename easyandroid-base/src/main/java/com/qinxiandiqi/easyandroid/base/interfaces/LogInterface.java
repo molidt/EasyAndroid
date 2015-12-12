@@ -16,7 +16,7 @@
 package com.qinxiandiqi.easyandroid.base.interfaces;
 
 /**
- * Created by Jianan on 10/24/15.
+ * Created by Jianan on 2015/10/24.
  */
 public interface LogInterface {
 

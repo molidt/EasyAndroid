@@ -22,7 +22,7 @@ import android.support.v4.app.FragmentActivity;
 import java.util.List;
 
 /**
- * Created by Jianan on 12/2/15.
+ * Created by Jianan on 2015/12/2.
  */
 public interface PresenterManager {
 

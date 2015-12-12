@@ -22,7 +22,7 @@ import com.qinxiandiqi.easyandroid.container.interfaces.ViewAdapter;
 
 /**
  *
- * Created by Jianan on 12/8/15.
+ * Created by Jianan on 2015/12/8.
  */
 public class EasyViewAdapter implements ViewAdapter{
 

@@ -19,7 +19,7 @@ import android.support.v4.app.Fragment;
 
 /**
  * The adapter interface between presenter and view(fragment).
- * Created by Jianan on 12/7/15.
+ * Created by Jianan on 2015/12/7.
  */
 public interface ViewAdapter extends DataTransport{
 

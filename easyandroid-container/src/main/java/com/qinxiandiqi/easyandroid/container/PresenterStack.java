@@ -20,7 +20,7 @@ import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
 import java.util.Stack;
 
 /**
- * Created by Jianan on 12/9/15.
+ * Created by Jianan on 2015/12/9.
  */
 public class PresenterStack extends Stack<Presenter>{
 

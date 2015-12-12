@@ -21,7 +21,7 @@ import android.graphics.BitmapFactory;
 import java.io.File;
 
 /**
- * Created by Jianan on 3/5/15.
+ * Created by Jianan on 2015/3/5.
  */
 public class ImageUtils {
 

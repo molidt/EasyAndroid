@@ -23,7 +23,7 @@ import android.os.Build;
 import java.util.Set;
 
 /**
- * Created by Jianan on 10/22/15.
+ * Created by Jianan on 2015/10/22.
  */
 public class EasyPreferences {
 

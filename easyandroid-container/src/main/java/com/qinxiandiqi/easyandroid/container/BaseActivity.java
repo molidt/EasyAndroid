@@ -18,7 +18,7 @@ package com.qinxiandiqi.easyandroid.container;
 import android.support.v4.app.FragmentActivity;
 
 /**
- * Created by Jianan on 11/28/15.
+ * Created by Jianan on 2015/11/28.
  */
 public class BaseActivity extends FragmentActivity {
 

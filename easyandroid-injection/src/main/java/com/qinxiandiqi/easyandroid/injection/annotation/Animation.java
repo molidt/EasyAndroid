@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by Jianan on 11/9/15.
+ * Created by Jianan on 2015/11/9.
  */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
