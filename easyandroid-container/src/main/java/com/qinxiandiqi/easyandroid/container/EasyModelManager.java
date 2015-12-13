@@ -21,4 +21,24 @@ import com.qinxiandiqi.easyandroid.container.interfaces.ModelManager;
  * Created by Jianan on 2015/12/10.
  */
 public class EasyModelManager implements ModelManager{
+
+   @Override
+   public <T> T getValue(int key, Class<T> type) {
+      return null;
+   }
+
+   @Override
+   public <T> T saveValue(int key, T value) {
+      return null;
+   }
+
+   @Override
+   public <T> T getGlobalValue(int key, Class<T> type) {
+      return null;
+   }
+
+   @Override
+   public <T> T saveGlobalValue(int key, T value) {
+      return null;
+   }
 }

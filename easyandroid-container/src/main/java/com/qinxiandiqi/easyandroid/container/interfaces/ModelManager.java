@@ -18,5 +18,5 @@ package com.qinxiandiqi.easyandroid.container.interfaces;
 /**
  * Created by Jianan on 2015/12/11.
  */
-public interface ModelManager {
+public interface ModelManager extends DataTransport{
 }
