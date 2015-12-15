@@ -13,30 +13,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package com.qinxiandiqi.easyandroid.container;
-
-import android.support.v4.app.Fragment;
-
-import com.qinxiandiqi.easyandroid.container.interfaces.IPresenter;
-import com.qinxiandiqi.easyandroid.container.interfaces.IViewAdapter;
+package com.qinxiandiqi.easyandroid.container.interfaces;
 
 /**
- *
- * Created by Jianan on 2015/12/8.
+ * Created by Jianan on 2015/12/15.
  */
-public class EasyViewAdapter implements IViewAdapter {
+public interface IModelManagerService extends IModelManager{
 
-   private Fragment mFragment;
-   private IPresenter mPresenter;
-
-   @Override
-   public void bindFragment(Fragment fragment) {
-      mFragment = fragment;
-   }
-
-   @Override
-   public void bindPresenter(IPresenter presenter) {
-      mPresenter = presenter;
-   }
-
+   boolean putModel(int type, IModel model);
 }

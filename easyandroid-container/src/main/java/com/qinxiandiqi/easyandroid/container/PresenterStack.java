@@ -15,14 +15,14 @@
  */
 package com.qinxiandiqi.easyandroid.container;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
+import com.qinxiandiqi.easyandroid.container.interfaces.IPresenter;
 
 import java.util.Stack;
 
 /**
  * Created by Jianan on 2015/12/9.
  */
-public class PresenterStack extends Stack<Presenter>{
+public class PresenterStack extends Stack<IPresenter>{
 
 
 }

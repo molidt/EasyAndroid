@@ -15,8 +15,23 @@
  */
 package com.qinxiandiqi.easyandroid.container.interfaces;
 
+import android.support.v4.app.Fragment;
+
 /**
- * Created by Jianan on 2015/12/11.
+ * The adapter interface between presenter and view(fragment).
+ * Created by Jianan on 2015/12/7.
  */
-public interface ModelManager extends DataTransport{
+public interface IViewAdapter {
+
+   /**
+    * bind the fragment.
+    * @param fragment
+    */
+   void bindFragment(Fragment fragment);
+
+   /**
+    * bind the presenter.
+    * @param presenter
+    */
+   void bindPresenter(IPresenter presenter);
 }

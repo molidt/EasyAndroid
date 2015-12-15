@@ -15,51 +15,31 @@
  */
 package com.qinxiandiqi.easyandroid.container;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
-import com.qinxiandiqi.easyandroid.container.interfaces.PresenterManager;
-import com.qinxiandiqi.easyandroid.container.interfaces.ViewAdapter;
+import com.qinxiandiqi.easyandroid.container.interfaces.IPresenter;
+import com.qinxiandiqi.easyandroid.container.interfaces.IPresenterManager;
+import com.qinxiandiqi.easyandroid.container.interfaces.IViewAdapter;
 
 /**
  * Created by Jianan on 2015/12/1.
  */
-public class EasyPresenter implements Presenter {
+public class EasyPresenter implements IPresenter {
 
-   private PresenterManager mPresenterManager;
+   private IPresenterManager mPresenterManager;
    private EasyPresenter mParent;
-   private ViewAdapter mViewAAdapter;
+   private IViewAdapter mViewAAdapter;
 
    @Override
-   public <T> T getValue(int key, Class<T> type) {
-      return null;
-   }
-
-   @Override
-   public <T> T saveValue(int key, T value) {
-      return null;
-   }
-
-   @Override
-   public <T> T getGlobalValue(int key, Class<T> type) {
-      return null;
-   }
-
-   @Override
-   public <T> T saveGlobalValue(int key, T value) {
-      return null;
-   }
-
-   @Override
-   public void bind(ViewAdapter viewAdapter) {
+   public void bind(IViewAdapter viewAdapter) {
       mViewAAdapter = viewAdapter;
    }
 
    @Override
-   public PresenterManager getPresenterManager() {
+   public IPresenterManager getPresenterManager() {
       return mPresenterManager;
    }
 
    @Override
-   public void setPresenterManager(PresenterManager presenterManager) {
+   public void setPresenterManager(IPresenterManager presenterManager) {
       mPresenterManager = presenterManager;
    }
 }

@@ -15,12 +15,13 @@
  */
 package com.qinxiandiqi.easyandroid.container;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.ModelManager;
+import com.qinxiandiqi.easyandroid.container.interfaces.IModel;
+import com.qinxiandiqi.easyandroid.container.interfaces.IModelManagerService;
 
 /**
  * Created by Jianan on 2015/12/10.
  */
-public class EasyModelManager implements ModelManager{
+public class EasyModelManager implements IModelManagerService{
 
    @Override
    public <T> T getValue(int key, Class<T> type) {
@@ -40,5 +41,20 @@ public class EasyModelManager implements ModelManager{
    @Override
    public <T> T saveGlobalValue(int key, T value) {
       return null;
+   }
+
+   @Override
+   public boolean putModel(int type, IModel model) {
+      return false;
+   }
+
+   @Override
+   public IModel getModel() {
+      return null;
+   }
+
+   @Override
+   public boolean putModel(IModel model) {
+      return false;
    }
 }

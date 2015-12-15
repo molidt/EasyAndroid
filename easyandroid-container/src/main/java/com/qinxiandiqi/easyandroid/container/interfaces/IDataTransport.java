@@ -19,7 +19,7 @@ package com.qinxiandiqi.easyandroid.container.interfaces;
  * This interface defend the data transporting rule.
  * Created by Jianan on 2015/11/30.
  */
-public interface DataTransport {
+public interface IDataTransport {
 
    /**
     * Get the local value by key.

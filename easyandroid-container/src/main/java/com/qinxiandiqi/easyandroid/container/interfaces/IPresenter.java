@@ -16,7 +16,12 @@
 package com.qinxiandiqi.easyandroid.container.interfaces;
 
 /**
- * Created by Jianan on 2015/12/11.
+ * Created by Jianan on 2015/12/1.
  */
-public interface Model {
+public interface IPresenter {
+
+   void bind(IViewAdapter viewAdapter);
+   IPresenterManager getPresenterManager();
+   void setPresenterManager(IPresenterManager presenterManager);
+
 }

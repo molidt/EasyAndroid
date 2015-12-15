@@ -19,9 +19,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.Presenter;
-import com.qinxiandiqi.easyandroid.container.interfaces.PresenterManager;
-import com.qinxiandiqi.easyandroid.container.interfaces.DataTransport;
+import com.qinxiandiqi.easyandroid.container.interfaces.IModelManager;
+import com.qinxiandiqi.easyandroid.container.interfaces.IModelManagerService;
+import com.qinxiandiqi.easyandroid.container.interfaces.IPresenter;
+import com.qinxiandiqi.easyandroid.container.interfaces.IPresenterManager;
+import com.qinxiandiqi.easyandroid.container.interfaces.IDataTransport;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -30,11 +32,12 @@ import java.util.List;
 /**
  * Created by Jianan on 2015/12/4.
  */
-public class EasyPresenterManager implements PresenterManager, DataTransport {
+public class EasyPresenterManager implements IPresenterManager, IDataTransport {
 
    private volatile HashMap<Integer, Object> mDataMap = new HashMap<Integer, Object>();
    private volatile WeakReference<FragmentActivity> mCacheActivity;
    private volatile PresenterStack mPresenterStack = new PresenterStack();
+   private volatile IModelManagerService mModelManagerService;
 
    @Override
    public <T> T getValue(int key, Class<T> type) {
@@ -62,27 +65,27 @@ public class EasyPresenterManager implements PresenterManager, DataTransport {
    }
 
    @Override
-   public void startPresenter(Presenter presenter) {
+   public void startPresenter(IPresenter presenter) {
       mPresenterStack.push(presenter);
    }
 
    @Override
-   public Presenter obtainPresenter(Fragment fragment, Bundle args) {
+   public IPresenter obtainPresenter(Fragment fragment, Bundle args) {
       return null;
    }
 
    @Override
-   public Presenter obtainPresenter(Class<Fragment> fragmentClass, Bundle args) {
+   public IPresenter obtainPresenter(Class<Fragment> fragmentClass, Bundle args) {
       return null;
    }
 
    @Override
-   public Presenter findPresenterByID(int id) {
+   public IPresenter findPresenterByID(int id) {
       return null;
    }
 
    @Override
-   public List<Presenter> findPresenterByClass(Class<Fragment> fragmentClass) {
+   public List<IPresenter> findPresenterByClass(Class<Fragment> fragmentClass) {
       return null;
    }
 
@@ -94,4 +97,15 @@ public class EasyPresenterManager implements PresenterManager, DataTransport {
          throw new RuntimeException("EasyPresenterManager shouldn't be attached to more then one activity.");
       }
    }
+
+   @Override
+   public void setModelManagerService(IModelManagerService modelManagerService) {
+      mModelManagerService = modelManagerService;
+   }
+
+   @Override
+   public IModelManagerService getModelManagerService() {
+      return mModelManagerService;
+   }
+
 }

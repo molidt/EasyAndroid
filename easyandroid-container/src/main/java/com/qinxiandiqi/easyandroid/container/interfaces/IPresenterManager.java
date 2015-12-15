@@ -24,13 +24,13 @@ import java.util.List;
 /**
  * Created by Jianan on 2015/12/2.
  */
-public interface PresenterManager {
+public interface IPresenterManager {
 
    /**
     * Start to run the presenter.
     * @param presenter the target presenter.
     */
-   void startPresenter(Presenter presenter);
+   void startPresenter(IPresenter presenter);
 
    /**
     * Obtain a presenter by the target fragment and its args.
@@ -38,7 +38,7 @@ public interface PresenterManager {
     * @param args the fragment's args
     * @return
     */
-   Presenter obtainPresenter(Fragment fragment, Bundle args);
+   IPresenter obtainPresenter(Fragment fragment, Bundle args);
 
    /**
     * Obtain a presenter by the target fragment class and its args.
@@ -46,25 +46,28 @@ public interface PresenterManager {
     * @param args the target fragment's args
     * @return
     */
-   Presenter obtainPresenter(Class<Fragment> fragmentClass, Bundle args);
+   IPresenter obtainPresenter(Class<Fragment> fragmentClass, Bundle args);
 
    /**
     * find a running presenter by its id
     * @param id the id of the running presenter
     * @return
     */
-   Presenter findPresenterByID(int id);
+   IPresenter findPresenterByID(int id);
 
    /**
     * find a running presenter list group by the presenter's target fragment class.
     * @param fragmentClass
     * @return
     */
-   List<Presenter> findPresenterByClass(Class<Fragment> fragmentClass);
+   List<IPresenter> findPresenterByClass(Class<Fragment> fragmentClass);
 
    /**
     * A EasyPresenterManager should attach to an activity, this method set the attaching activity.
     * @param activity
     */
    void setAttachActivity(FragmentActivity activity);
+
+   void setModelManagerService(IModelManagerService modelManagerService);
+   IModelManagerService getModelManagerService();
 }

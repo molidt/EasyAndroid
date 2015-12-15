@@ -16,12 +16,7 @@
 package com.qinxiandiqi.easyandroid.container.interfaces;
 
 /**
- * Created by Jianan on 2015/12/1.
+ * Created by Jianan on 2015/12/11.
  */
-public interface Presenter extends DataTransport{
-
-   void bind(ViewAdapter viewAdapter);
-   PresenterManager getPresenterManager();
-   void setPresenterManager(PresenterManager presenterManager);
-
+public interface IModel {
 }
