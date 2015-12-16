@@ -19,11 +19,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.qinxiandiqi.easyandroid.container.interfaces.IModelManager;
+import com.qinxiandiqi.easyandroid.container.interfaces.IDataTransport;
 import com.qinxiandiqi.easyandroid.container.interfaces.IModelManagerService;
 import com.qinxiandiqi.easyandroid.container.interfaces.IPresenter;
 import com.qinxiandiqi.easyandroid.container.interfaces.IPresenterManager;
-import com.qinxiandiqi.easyandroid.container.interfaces.IDataTransport;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -34,10 +33,21 @@ import java.util.List;
  */
 public class EasyPresenterManager implements IPresenterManager, IDataTransport {
 
+   private static volatile EasyPresenterManager sEasyPresenterManager;
    private volatile HashMap<Integer, Object> mDataMap = new HashMap<Integer, Object>();
    private volatile WeakReference<FragmentActivity> mCacheActivity;
    private volatile PresenterStack mPresenterStack = new PresenterStack();
    private volatile IModelManagerService mModelManagerService;
+
+   private EasyPresenterManager(){}
+
+   public static final EasyPresenterManager init(FragmentActivity act){
+      if(sEasyPresenterManager == null){
+         sEasyPresenterManager = new EasyPresenterManager();
+         sEasyPresenterManager.setAttachActivity(act);
+      }
+      return sEasyPresenterManager;
+   }
 
    @Override
    public <T> T getValue(int key, Class<T> type) {
