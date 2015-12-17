@@ -23,6 +23,17 @@ import com.qinxiandiqi.easyandroid.container.interfaces.IModelManagerService;
  */
 public class EasyModelManager implements IModelManagerService{
 
+   private static volatile EasyModelManager sEasyModelManager;
+
+   public static final EasyModelManager getInstance(){
+      if(sEasyModelManager == null){
+         sEasyModelManager = new EasyModelManager();
+      }
+      return sEasyModelManager;
+   }
+
+   private EasyModelManager(){}
+
    @Override
    public <T> T getValue(int key, Class<T> type) {
       return null;
