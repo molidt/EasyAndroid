@@ -3,7 +3,7 @@
 Make the android development to be easy.
 
 It's still coding, please wait...
-
+2015-12-22：I would be busy,so this project would be stopped a few days.But I never give up.I'll back. :)
 
 # Design Thinking Of EasyAndroid
 
