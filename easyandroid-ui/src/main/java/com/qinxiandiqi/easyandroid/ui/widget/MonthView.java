@@ -17,6 +17,7 @@ package com.qinxiandiqi.easyandroid.ui.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
@@ -25,6 +26,10 @@ import android.view.View;
  * Created by Jianan on 2015/12/24.
  */
 public class MonthView extends View {
+
+   private int mYear, mMonth;
+   private int mCellLength;
+
    public MonthView(Context context) {
       super(context);
    }
@@ -42,6 +47,11 @@ public class MonthView extends View {
       super(context, attrs, defStyleAttr, defStyleRes);
    }
 
+   @Override
+   protected void onDraw(Canvas canvas) {
+      super.onDraw(canvas);
+   }
+
    private boolean isLeapYear(int year){
       if(year % 400 == 0){
          return true;
@@ -53,5 +63,17 @@ public class MonthView extends View {
          return true;
       }
       return false;
+   }
+
+   public interface Cell{
+
+   }
+
+   public static class WeekCell implements Cell{
+
+   }
+
+   public static class DayCell implements Cell{
+
    }
 }
