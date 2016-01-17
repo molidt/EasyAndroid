@@ -66,14 +66,22 @@ public class MonthView extends View {
    }
 
    public interface Cell{
-
+      void drawCell(Canvas canvas);
    }
 
    public static class WeekCell implements Cell{
 
+      @Override
+      public void drawCell(Canvas canvas) {
+
+      }
    }
 
    public static class DayCell implements Cell{
 
+      @Override
+      public void drawCell(Canvas canvas) {
+
+      }
    }
 }
