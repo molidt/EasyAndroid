@@ -1,1 +1,1 @@
-include ':sample', ':easyandroid-base', ':easyandroid', ':easyandroid-bluetooth', ':easyandroid-cache', ':easyandroid-ui', ':easyandroid-network', ':easyandroid-database', ':easyandroid-injection', ':easyandroid-container', ':easyandroid-social'
+include ':sample', ':easyandroid-base', ':easyandroid', ':easyandroid-bluetooth', ':easyandroid-cache', ':easyandroid-ui', ':easyandroid-network', ':easyandroid-database', ':easyandroid-injection', ':easyandroid-container', ':easyandroid-social', ':easyandroid-js'
