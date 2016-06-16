@@ -33,47 +33,46 @@ public class EasyInjection {
 
     private View rootView;
     private Object holder;
-    private Map<Integer, View> cacheViews = new HashMap<Integer, View>();
+    private Map<String, View> cacheViews = new HashMap<String, View>();
+    private StringBuilder cacheStrBuilder = new StringBuilder();
 
-    public static final EasyInjection bind(Activity act, int layoutID){
+    public static EasyInjection bind(Activity act, int layoutID){
         act.setContentView(layoutID);
         return bind(act.getWindow().getDecorView(), act);
     }
 
-    public static final EasyInjection bind(View rootView, Object holder){
-        EasyInjection instance = new EasyInjection();
-        instance.rootView = rootView;
-        instance.holder = holder;
-        return instance;
+    public static EasyInjection bind(View rootView, Object holder){
+        return new EasyInjection(rootView, holder);
     }
 
-    public final <T extends View> EasyInjection view(T view, int resID){
-        if(cacheViews.containsKey(resID)){
-            view = (T) cacheViews.get(resID);
-        }else{
-            view = (T) rootView.findViewById(resID);
-            cacheViews.put(resID, view);
-        }
-        return this;
+    private EasyInjection(View rootView, Object holder){
+        this.rootView = rootView;
+        this.holder = holder;
     }
 
-    public final EasyInjection string(String target, int resID){
-        target = rootView.getResources().getString(resID);
-        return this;
+    public final <T extends View> T view(int... resID){
+        return findView(resID);
     }
 
-    public final EasyInjection color(Integer target, int resID){
-        target = rootView.getResources().getColor(resID);
-        return this;
+    public final String string(int resID){
+        return rootView.getResources().getString(resID);
     }
 
-    public final EasyInjection dimen(Float target, int resID){
-        target = rootView.getResources().getDimension(resID);
-        return this;
+    public final int color(int resID){
+        return rootView.getResources().getColor(resID);
     }
 
-    public final EasyInjection anim(Animation target, int resID){
-        target = AnimationUtils.loadAnimation(rootView.getContext(), resID);
+    public final float dimen(int resID){
+        return rootView.getResources().getDimension(resID);
+    }
+
+    public final Animation anim(int resID){
+        return AnimationUtils.loadAnimation(rootView.getContext(), resID);
+    }
+
+    public final EasyInjection onClick(View.OnClickListener listener, int... resIDs){
+        View tempView = view(resIDs);
+        tempView.setOnClickListener(listener);
         return this;
     }
 
@@ -92,22 +91,15 @@ public class EasyInjection {
                 }
             }
         };
-        View tempView = null;
-        for(int id : resIDs){
-            view(tempView, id);
-            tempView.setOnClickListener(listener);
-        }
-        return this;
+        return onClick(listener, resIDs);
     }
 
-    public final EasyInjection onClick(final String methodName, int... resIDs){
+    public final EasyInjection onClick(String methodName, int... resIDs){
         try {
             Method method = holder.getClass().getDeclaredMethod(methodName, View.class);
-            onClick(method, resIDs);
+            return onClick(method, resIDs);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException("Can't find out " + methodName + " method.", e);
-        }finally {
-            return this;
         }
     }
 
@@ -125,8 +117,7 @@ public class EasyInjection {
                 }
             }
         };
-        View tempView = null;
-        view(tempView, resID);
+        View tempView = view(resID);
         if(tempView instanceof AdapterView){
             ((AdapterView)tempView).setOnItemClickListener(listener);
         }else{
@@ -138,11 +129,9 @@ public class EasyInjection {
     public final EasyInjection onItemClick(String methodName, int resID){
         try {
             Method method = holder.getClass().getMethod(methodName, AdapterView.class, View.class, Integer.class, Long.class);
-            onItemClick(method, resID);
+            return onItemClick(method, resID);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException("Can't find out " + methodName + " method.", e);
-        }finally {
-            return this;
         }
     }
 
@@ -161,11 +150,8 @@ public class EasyInjection {
                 return false;
             }
         };
-        View tempView = null;
-        for(int id : resIDs){
-            view(tempView, id);
-            tempView.setOnLongClickListener(listener);
-        }
+        View tempView = view(resIDs);
+        tempView.setOnLongClickListener(listener);
         return this;
     }
 
@@ -194,8 +180,7 @@ public class EasyInjection {
                 return false;
             }
         };
-        View tempView = null;
-        view(tempView, resID);
+        View tempView = view(resID);
         if(tempView instanceof AdapterView){
             ((AdapterView)tempView).setOnItemLongClickListener(listener);
         }else{
@@ -207,10 +192,39 @@ public class EasyInjection {
     public final EasyInjection onItemLongClick(String methodName, int resID){
         try {
             Method method = holder.getClass().getDeclaredMethod(methodName, AdapterView.class, View.class, Integer.class, Long.class);
-            onItemLongClick(method, resID);
+            return onItemLongClick(method, resID);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException("can't find out method of this name:" + methodName, e);
         }
-        return this;
+    }
+
+    private <T extends View> T findView(int... resIDs){
+        if(resIDs.length <= 0){
+            throw new RuntimeException("EasyInjection don't know which view you want, please give me the view's id.");
+        }
+        String strKey = getStrViewID(resIDs);
+        View view = cacheViews.get(strKey);
+        if(view == null){
+            view = rootView;
+            for (int resID : resIDs) {
+                view = view.findViewById(resID);
+                if (view == null) {
+                    throw new RuntimeException("EasyInjection can't find out the view which id is " + strKey);
+                }
+            }
+            cacheViews.put(strKey, view);
+        }
+        return (T)view;
+    }
+
+    private String getStrViewID(int... resIDs){
+        cacheStrBuilder.delete(0, cacheStrBuilder.length());
+        for(int i = 0; i < resIDs.length; i ++){
+            if(cacheStrBuilder.length() > 0){
+                cacheStrBuilder.append("#");
+            }
+            cacheStrBuilder.append(resIDs[i]);
+        }
+        return cacheStrBuilder.toString();
     }
 }
