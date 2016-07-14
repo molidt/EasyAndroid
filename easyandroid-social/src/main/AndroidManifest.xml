@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.qinxiandiqi.easyandroid.social">
+    package="com.molidt.easyandroid.social">
 
     <application
         android:allowBackup="true"
